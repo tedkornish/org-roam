@@ -61,7 +61,7 @@
 (defcustom org-roam-dailies-capture-templates
   '(("d" "default" entry (function org-roam-capture--get-point)
      "* %?"
-     :file-name "daily/%<%Y-%m-%d>"
+     :file-name (concat org-roam-dailies-directory "/%<%Y-%m-%d>")
      :head "#+title: %<%Y-%m-%d>\n"))
   "Capture templates for daily-notes in Org-roam."
   :group 'org-roam
@@ -70,7 +70,7 @@
   '(repeat
     (choice :value ("d" "default" plain (function org-roam-capture--get-point)
                     "%?"
-                    :file-name "daily/%<%Y-%m-%d>"
+                    :file-name (concat org-roam-dailies-directory "/%<%Y-%m-%d>")
                     :head "#+title: %<%Y-%m-%d>\n"
                     :unnarrowed t)
       (list :tag "Multikey description"
@@ -94,7 +94,7 @@ Template string   :\n%v")
             (const :format "" function)
             (function :tag "Template function ")))
         (const :format "File name format  :" :file-name)
-        (string :format " %v" :value "daily/%<%Y-%m-%d>")
+        (string :format " %v" :value (concat org-roam-dailies-directory "/%<%Y-%m-%d>"))
         (const :format "Header format     :" :head)
         (string :format " %v" :value "#+title: ${title}\n")
         (plist :inline t
